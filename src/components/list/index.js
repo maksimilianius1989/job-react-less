@@ -1,10 +1,12 @@
 import {TaskList} from "../../init/taskList";
-import React from "react";
+import React, {useState} from "react";
 import {Task} from "../task/task";
 
 
 export const List = () => {
+	const [loading, setLoading] = useState(false);
 
+	const [list, setList] = useState(TaskList);
 	// const listTask = TaskList.map(function (task, index) {
 	// 	return (
 	// 		<Fragment key={ task.id }>

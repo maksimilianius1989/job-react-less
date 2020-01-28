@@ -1,19 +1,10 @@
 import React from 'react';
 import './App.css';
-import {List} from "./components/list";
-import {Header} from "./components/header";
+
+import {Template} from "./components/template";
 import {LoginForm} from "./components/LoginForm";
 
 const App = () => {
-  return (
-      <>
-          <Header/>
-          <div className="container">
-              <LoginForm/>
-            <h2>Test</h2>
-            <List/>
-          </div>
-      </>
-  );
+  return <Template data={[1,2,3]}><LoginForm/>{[1,3,4,[66,'sdfsdfsd']]}{[1,3,4,6]}</Template>
 };
 export default App;
