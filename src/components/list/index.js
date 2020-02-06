@@ -1,37 +1,49 @@
 import {TaskList} from "../../init/taskList";
 import React, {useState} from "react";
 import {Task} from "../task/task";
+import {TaskForm} from "../formTask";
 
 
 export const List = () => {
-	const [loading, setLoading] = useState(false);
-
 	const [list, setList] = useState(TaskList);
-	// const listTask = TaskList.map(function (task, index) {
-	// 	return (
-	// 		<Fragment key={ task.id }>
-	// 			<p>hello</p>
-	// 			<Task  task={task} />
-	// 		</Fragment>
-	// 		)
-	// });
-	// const listTask = TaskList.map((task, index) => {
-	// 	return <Task key={index} task={task}/>
-	// });
-	const setDone = (id) => {
-		TaskList.map((el) => {
+	console.log('list', list);
+	const addTask = message => {
+		setList(
+			[
+				...list,
+				{
+					"userId": 2,
+					"id": Date.now().toString(),
+					"title": message,
+					"completed": false
+				}
+			]
+		)
+	};
+	const deleteTask = id => {
+		console.log('id', id);
+		setList( prev => {
+			return prev.filter(el => {
+				return el.id !== id;
+			})
+		})
+	};
+	const complateTask = id => {
+		setList( prev => prev.map((el) => {
 			if(el.id === id) {
 				el.completed = !el.completed
 			}
 			return el;
 		})
+		)
 	};
-	const listTask = TaskList.map(task => <Task key={task.id} task={task} setDone={setDone}/> );
+	const listTask = list.map(task => <Task key={task.id} task={task} setDone={complateTask} delete={deleteTask}/> );
 
 
 	return (
 		<>
-			<h2>My Task List </h2>
+			<TaskForm addTask={addTask}/>
+			<h2>Мої задачі :</h2>
 			<ul className="collection" >{listTask}</ul>
 		</>
 	)

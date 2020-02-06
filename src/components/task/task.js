@@ -6,14 +6,25 @@ export const Task = (props) => {
 	const [count, setCount] = useState(0);
 	// console.log('count', count, 'setCount', setCount);
 
-	const {task} = props;
+	const {task, delete:deleteTask, setDone} = props;
 
 	const handleClick = event => {
+		setDone(task.id);
+
 		console.log(event);
 		setCount((prev) => prev + 5);
 	};
+	const butonStyle = {
+		float : 'right'
+	};
+	const complateStatus = {
+		textDecoration : 'line-through'
+	};
 	return (
-		<li className="collection-item" onClick={handleClick}>Count {count} | {task.title} 	</li>
+		<li className="collection-item" onClick={handleClick} style={task.completed ? complateStatus : {}}>
+			Count {count} | {task.title}
+			<button style={butonStyle} onClick={(event)=>{deleteTask(task.id)}}>Видалити</button>
+		</li>
 	);
 };
 
