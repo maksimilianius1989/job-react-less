@@ -7,15 +7,15 @@ import {TaskForm} from "../formTask";
 export const List = () => {
 	const [list, setList] = useState(TaskList);
 	console.log('list', list);
-	const addTask = message => {
+	const addTask = (task) => {
 		setList(
 			[
 				...list,
 				{
-					"userId": 2,
+					"userId": task.userID,
 					"id": Date.now().toString(),
-					"title": message,
-					"completed": false
+					"title": task.message,
+					"completed": task.completed
 				}
 			]
 		)
