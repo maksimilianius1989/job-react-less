@@ -5,7 +5,6 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import {Provider} from "./HOC/context";
 
 import {TaskList} from "./init/taskList";
-import {Template} from "./template";
 import {Routes} from "./routes";
 
 const App = () => {

@@ -1,53 +1,21 @@
 import React, {Component} from "react";
-
+import {book} from "../../routes/books";
+import {Link, NavLink} from "react-router-dom";
 
 export class Header extends Component {
 	constructor(props) {
 		super(props);
-
-		this.state = {
-			color : '#ee6e73',
-			color2 : '#ccc',
-			menu : [
-				{
-					title : 'Main',
-					url : '/',
-					hide : false,
-					alt : 'При наведенні на пункт меню курсором я буду бачити цей текст'
-				},
-				{
-					title : 'Main',
-					url : '/',
-					hide : false,
-					alt : 'При наведенні на пункт меню курсором я буду бачити цей текст'
-				}
-				,{
-					title : 'Main',
-					url : '/',
-					hide : false,
-					alt : 'При наведенні на пункт меню курсором я буду бачити цей текст'
-				}
-			]
-		};
 	}
-
-	handleClick = (event)  => {
-		event.preventDefault();
-			this.setState( (oldState) => {
-			return  {color2 : oldState.color2 === '#ccc' ? '#ee6e73' : '#ccc' };
-		});
-	};
-
 	render() {
-		const { color2 } = this.state;
+
 		return (
-			<nav style={ {backgroundColor : color2 } } >
+			<nav  >
 				<div className="nav-wrapper">
-					<a href="#"  onClick={this.handleClick}  className="brand-logo center">Logo</a>
+					<a href="#"  className="brand-logo center">Logo</a>
 					<ul id="nav-mobile" className="left hide-on-med-and-down">
-						<li><a href="sass.html">Sass</a></li>
-						<li><a href="badges.html">Components</a></li>
-						<li><a href="collapsible.html">JavaScript</a></li>
+						<li><Link  to={book.root.path}>{book.root.title}</Link></li>
+						<li><Link  to={book.news.path}>{book.news.title}</Link></li>
+						<li><Link  to={book.profile.path}>{book.profile.title}</Link></li>
 					</ul>
 				</div>
 			</nav>

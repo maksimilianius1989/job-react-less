@@ -14,7 +14,7 @@ export const book = Object.freeze({
 		onMenu : true
 	},
 	post : {
-		path : '/news/:id',
+		path : '/news/:slug',
 		pathurl : '/news/',
 		icon : '',
 		title : 'Новина',
@@ -22,7 +22,7 @@ export const book = Object.freeze({
 	},
 	profile : {
 		path : '/profile',
-		title : 'Ви завершили тест',
+		title : 'Профиль',
 		icon : 'book',
 		onMenu : true
 	},
