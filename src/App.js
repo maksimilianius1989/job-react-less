@@ -1,15 +1,19 @@
 import React from 'react';
 import './App.css';
+import {BrowserRouter as Router} from 'react-router-dom';
 
-import {Template} from "./components/template";
 import {Provider} from "./HOC/context";
 
 import {TaskList} from "./init/taskList";
+import {Template} from "./template";
+import {Routes} from "./routes";
 
 const App = () => {
   return(
       <Provider value={TaskList}>
-        <Template/>
+          <Router>
+              <Routes/>
+          </Router>
       </Provider>
     )
 };

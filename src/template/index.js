@@ -1,7 +1,6 @@
 import React, {Fragment, Children} from 'react';
-import {Header} from "../header";
-import {LoginForm} from "../LoginForm";
-import {List} from "../list";
+import {Header} from "../components/header";
+import {List} from "../components/list";
 
 export const Template = (props) => {
 	// console.log(props);
@@ -12,7 +11,6 @@ export const Template = (props) => {
 			<Header/>
 			<div className="container">
 				{props.children}
-				<List/>
 			</div>
 		</Fragment>
 	)
