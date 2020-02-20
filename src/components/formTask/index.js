@@ -3,6 +3,7 @@ import React, {Fragment, useState} from 'react';
 export const TaskForm = ({addTask}) => {
 	const [item, setItem] = useState({
 												message : '',
+												description : '',
 												userID : '',
 												completed : false
 											});
@@ -25,8 +26,9 @@ export const TaskForm = ({addTask}) => {
 		<Fragment>
 			<h4>Створити задачу</h4>
 			<form action="">
-				<input type="text" value={item.message} onChange={(event)=> setMessage('message', event.target.value)}/>
-				<input type="number" value={item.id} onChange={(event)=> setMessage('userID', event.target.value)}/>
+				<input type="text" value={item.message} onChange={(event)=> setMessage('message', event.target.value)} placeholder='Назва'/>
+				<input type="number" value={item.id} onChange={(event)=> setMessage('userID', event.target.value)} placeholder='Number'/>
+				<input type="text" value={item.description} onChange={(event)=> setMessage('description', event.target.value)} placeholder='Опис'/>
 
 				<label>
 					<input type="checkbox" value={`Status`} onChange={

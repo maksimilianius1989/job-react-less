@@ -2,8 +2,8 @@
 import React, {useState} from 'react';
 
 export const Task = (props) => {
-
 	const [count, setCount] = useState(0);
+	const [show, setShow] = useState(false);
 	// console.log('count', count, 'setCount', setCount);
 
 	const {task, delete:deleteTask, setDone} = props;
@@ -15,14 +15,30 @@ export const Task = (props) => {
 		setCount((prev) => prev + 5);
 	};
 	const butonStyle = {
-		float : 'right'
+		position : 'absolute',
+		top : '5px',
+		right : '10px'
 	};
 	const complateStatus = {
 		textDecoration : 'line-through'
 	};
+	const hideStyles = {
+		display : show ? 'block' : 'none',
+		transition : 'all 1.5s ease',
+		backgroundColor : '#ccc'
+	};
 	return (
 		<li className="collection-item" onClick={handleClick} style={task.completed ? complateStatus : {}}>
-			Count {count} | {task.title}
+			<p
+				onMouseEnter={()=>{setShow(true)}}
+				onMouseOut={()=>setShow(false)}
+			>
+				{task.title}
+			</p>
+			<p style={hideStyles}>
+				<strong>Опис : </strong>
+				{task.description ? task.description : 'Lorem ipsum   '}
+			</p>
 			<button style={butonStyle} onClick={(event)=>{deleteTask(task.id)}}>Видалити</button>
 		</li>
 	);

@@ -1,7 +1,10 @@
 .App {
   text-align: center;
 }
-
+.collection-item {
+  position: relative;
+  padding-right: 10%!important;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

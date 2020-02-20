@@ -15,7 +15,8 @@ export const List = () => {
 					"userId": task.userID,
 					"id": Date.now().toString(),
 					"title": task.message,
-					"completed": task.completed
+					"completed": task.completed,
+					"description" : task.description
 				}
 			]
 		)
