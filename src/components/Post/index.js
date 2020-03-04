@@ -1,8 +1,10 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
+import {Card, Spinner} from "react-bootstrap";
+import {PostImage} from "../postImage";
 
 export const Post = ()=> {
-	const[data, setData] = useState({});
+	const[data, setData] = useState(null);
 	const [loading, setLoading] = useState(true);
 	let { slug } = useParams();
 
@@ -16,14 +18,23 @@ export const Post = ()=> {
 		})()
 	}, []);
 	console.log(data);
+
+	if(loading || !data ) {
+		return <Spinner animation="border" variant="warning" />
+	}
+
 	return (
 		<Fragment>
-		{ loading ? 'Load' :
-			<div>
-				<h2>{data.title.rendered}</h2>
-				<p dangerouslySetInnerHTML={{ __html: data.content.rendered }} />
-			</div>
-		}
+			<Card>
+				<Card.Header>{data.title.rendered}</Card.Header>
+				<Card.Body>
+					<PostImage imageId={data.featured_media}  height='100%' width='100%' alt={data.title.rendered}/>
+					<Card.Title>{data.title.rendered}</Card.Title>
+					<Card.Text>
+						<p dangerouslySetInnerHTML={{ __html: data.content.rendered }} />
+					</Card.Text>
+				</Card.Body>
+			</Card>
 		</Fragment>
 
 	)
