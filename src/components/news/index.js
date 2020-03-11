@@ -2,8 +2,9 @@ import React, {Fragment, useEffect, useState} from 'react';
 import {book} from "../../routes/books";
 import {Link} from "react-router-dom";
 import {apiPosts} from "../../api/posts";
-import {Media, Spinner} from "react-bootstrap";
+import {Card, Media, Spinner} from "react-bootstrap"
 import {PostImage} from "../postImage";
+import {PostCategory} from "../categoryList"
 
 // https://twodayweb.ru/wp-json/wp/v2/posts
 
@@ -33,6 +34,7 @@ export const News = () => {
 				<Media.Body>
 					<h5><Link to={`${book.post.pathurl}${el.id}`}>{el.title.rendered}</Link></h5>
 					<p dangerouslySetInnerHTML={{ __html: el.excerpt.rendered }} />
+					<PostCategory postId={el.id} />
 				</Media.Body>
 			</Media>
 		)

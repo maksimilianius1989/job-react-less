@@ -2,6 +2,7 @@ import React, {Fragment, useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {Card, Spinner} from "react-bootstrap";
 import {PostImage} from "../postImage";
+import {PostCategory} from "../categoryList"
 
 export const Post = ()=> {
 	const[data, setData] = useState(null);
