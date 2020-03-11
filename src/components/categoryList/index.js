@@ -1,11 +1,9 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {postCategory} from "../../api/postCategory";
 import {Spinner} from "react-bootstrap";
-import Badge from 'react-bootstrap/Badge'
 
 export const PostCategory = ({postId}) => {
     const [categories, setCategories] = useState(null);
-
 
     useEffect(() => {
         (async () => {

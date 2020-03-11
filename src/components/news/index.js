@@ -5,22 +5,24 @@ import {apiPosts} from "../../api/posts";
 import {Card, Media, Spinner} from "react-bootstrap"
 import {PostImage} from "../postImage";
 import {PostCategory} from "../categoryList"
+import {PostPagination} from "../pagination"
 
 // https://twodayweb.ru/wp-json/wp/v2/posts
 
 export const News = () => {
 	const [posts, setPosts] = useState(null);
 	const [loading, setLoading] = useState(false);
+	const [pageNumber, setPageNumber] = useState(1);
 
 	useEffect(() => {
 		(async () => {
+			console.log('--------------->pageNumber', pageNumber)
 			setLoading(true);
-			const data = await apiPosts.get(1);
+			const data = await apiPosts.get(pageNumber);
 			setPosts(data);
 			setLoading(false)
 		})()
-
-	}, []);
+	},[pageNumber]);
 
 	if (null === posts || loading) {
 		return <Spinner animation="grow" variant="danger"/>
@@ -39,13 +41,15 @@ export const News = () => {
 			</Media>
 		)
 	});
-
+	
 	return (
 		<Fragment>
 			<h1>News</h1>
 			<ul className="list-unstyled">
 				{postList}
 			</ul>
+
+			<PostPagination pageNumber={pageNumber} setPageNumber={setPageNumber}/>
 		</Fragment>
 	)
 };
